@@ -33,8 +33,6 @@
             label2 = new Label();
             RB_PDF_UseRectSize = new RadioButton();
             RB_PDF_UseA4 = new RadioButton();
-            L_FastAlert = new Label();
-            PB = new ProgressBar();
             B_Start = new Button();
             NUD_Delay = new NumericUpDown();
             NUD_PageCount = new NumericUpDown();
@@ -53,6 +51,8 @@
             LL_SelfAd = new LinkLabel();
             B_TmpFolder = new Button();
             label1 = new Label();
+            L_FastAlert = new Label();
+            PB = new ProgressBar();
             GB_Options.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)NUD_Delay).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NUD_PageCount).BeginInit();
@@ -74,8 +74,6 @@
             GB_Options.Controls.Add(label2);
             GB_Options.Controls.Add(RB_PDF_UseRectSize);
             GB_Options.Controls.Add(RB_PDF_UseA4);
-            GB_Options.Controls.Add(L_FastAlert);
-            GB_Options.Controls.Add(PB);
             GB_Options.Controls.Add(B_Start);
             GB_Options.Controls.Add(NUD_Delay);
             GB_Options.Controls.Add(NUD_PageCount);
@@ -84,7 +82,7 @@
             GB_Options.Controls.Add(GB_Coordinates);
             GB_Options.Location = new Point(12, 49);
             GB_Options.Name = "GB_Options";
-            GB_Options.Size = new Size(538, 254);
+            GB_Options.Size = new Size(538, 186);
             GB_Options.TabIndex = 1;
             GB_Options.TabStop = false;
             GB_Options.Text = "Options";
@@ -121,23 +119,6 @@
             RB_PDF_UseA4.TabStop = true;
             RB_PDF_UseA4.Text = "A4";
             RB_PDF_UseA4.UseVisualStyleBackColor = true;
-            // 
-            // L_FastAlert
-            // 
-            L_FastAlert.AutoSize = true;
-            L_FastAlert.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            L_FastAlert.Location = new Point(6, 220);
-            L_FastAlert.Name = "L_FastAlert";
-            L_FastAlert.Size = new Size(54, 21);
-            L_FastAlert.TabIndex = 7;
-            L_FastAlert.Text = "(owo')";
-            // 
-            // PB
-            // 
-            PB.Location = new Point(6, 182);
-            PB.Name = "PB";
-            PB.Size = new Size(526, 28);
-            PB.TabIndex = 6;
             // 
             // B_Start
             // 
@@ -214,8 +195,9 @@
             L_Picker.ForeColor = SystemColors.GrayText;
             L_Picker.Location = new Point(7, 122);
             L_Picker.Name = "L_Picker";
-            L_Picker.Size = new Size(0, 21);
+            L_Picker.Size = new Size(75, 21);
             L_Picker.TabIndex = 10;
+            L_Picker.Text = "(✿◡‿◡)";
             // 
             // B_PickAll
             // 
@@ -338,11 +320,30 @@
             label1.TabIndex = 12;
             label1.Text = "double-click on XY boxes to select individual coordinates.\r\na minimum delay of 100ms is recommended.\r\n";
             // 
+            // L_FastAlert
+            // 
+            L_FastAlert.AutoSize = true;
+            L_FastAlert.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            L_FastAlert.Location = new Point(12, 272);
+            L_FastAlert.Name = "L_FastAlert";
+            L_FastAlert.Size = new Size(87, 21);
+            L_FastAlert.TabIndex = 14;
+            L_FastAlert.Text = "o((>ω< ))o";
+            // 
+            // PB
+            // 
+            PB.Location = new Point(12, 241);
+            PB.Name = "PB";
+            PB.Size = new Size(538, 28);
+            PB.TabIndex = 13;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(562, 348);
+            Controls.Add(L_FastAlert);
+            Controls.Add(PB);
             Controls.Add(label1);
             Controls.Add(B_TmpFolder);
             Controls.Add(LL_SelfAd);
@@ -381,13 +382,13 @@
         private NumericUpDown NUD_Delay;
         private NumericUpDown NUD_PageCount;
         private Button B_Start;
-        private ProgressBar PB;
-        private Label L_FastAlert;
         private Label L_Picker;
         private Button B_TmpFolder;
         private Label label1;
         private Label label2;
         private RadioButton RB_PDF_UseRectSize;
         private RadioButton RB_PDF_UseA4;
+        private Label L_FastAlert;
+        private ProgressBar PB;
     }
 }
