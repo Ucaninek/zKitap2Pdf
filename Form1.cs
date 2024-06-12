@@ -1,6 +1,10 @@
-﻿using System.Diagnostics;
+﻿using iText.Kernel.Geom;
+using System.Diagnostics;
 using System.Drawing.Imaging;
 using Transitions;
+using Path = System.IO.Path;
+using Point = System.Drawing.Point;
+using Rectangle = System.Drawing.Rectangle;
 
 namespace zKitap2Pdf
 {
@@ -68,15 +72,14 @@ namespace zKitap2Pdf
             L_Picker.Text = $"Picked {picking}";
         }
 
-        private async Task CaptureScreenshots(IProgress<int>? progress = null)
+        private async Task CaptureScreenshots(Rectangle roi, IProgress<int>? progress = null)
         {
             Directory.CreateDirectory("tmp");
-            Rectangle rect = new Rectangle(TopLeft!.Value, new Size(BottomRight!.Value.X - TopLeft.Value.X, BottomRight.Value.Y - TopLeft.Value.Y));
             int pageCount = (int)NUD_PageCount.Value;
 
             for (int i = 0; i < pageCount; i++)
             {
-                Bitmap screenshot = ScreenshotHelper.CaptureScreenshot(rect);
+                Bitmap screenshot = ScreenshotHelper.CaptureScreenshot(roi);
                 screenshot.Save($"tmp/{i}.png", ImageFormat.Png);
 
                 MouseUtil.Click(NextPage!.Value.X, NextPage!.Value.Y);
@@ -151,7 +154,8 @@ namespace zKitap2Pdf
             }
 
             B_Start.Enabled = false;
-            await CaptureScreenshots(new Progress<int>(percentComplete =>
+            Rectangle roi = new Rectangle(TopLeft!.Value, new Size(BottomRight!.Value.X - TopLeft.Value.X, BottomRight.Value.Y - TopLeft.Value.Y));
+            await CaptureScreenshots(roi, new Progress<int>(percentComplete =>
             {
                 PB.Invoke((MethodInvoker)delegate
                 {
@@ -161,7 +165,7 @@ namespace zKitap2Pdf
 
             PB.Style = ProgressBarStyle.Marquee;
 
-            PDFUtil.ConvertImagesToPdf(Directory.GetFiles("tmp", "*.png"), "output.pdf");
+            PDFUtil.ConvertImagesToPdf(Directory.GetFiles("tmp", "*.png"), "output.pdf", RB_PDF_UseA4.Checked ? PageSize.A4 : new PageSize(roi.Width, roi.Height));
 
             FastAlert("Done!");
             B_Start.Enabled = true;

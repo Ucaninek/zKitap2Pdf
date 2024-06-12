@@ -30,6 +30,9 @@
         {
             L_Title = new Label();
             GB_Options = new GroupBox();
+            label2 = new Label();
+            RB_PDF_UseRectSize = new RadioButton();
+            RB_PDF_UseA4 = new RadioButton();
             L_FastAlert = new Label();
             PB = new ProgressBar();
             B_Start = new Button();
@@ -68,6 +71,9 @@
             // 
             // GB_Options
             // 
+            GB_Options.Controls.Add(label2);
+            GB_Options.Controls.Add(RB_PDF_UseRectSize);
+            GB_Options.Controls.Add(RB_PDF_UseA4);
             GB_Options.Controls.Add(L_FastAlert);
             GB_Options.Controls.Add(PB);
             GB_Options.Controls.Add(B_Start);
@@ -78,16 +84,49 @@
             GB_Options.Controls.Add(GB_Coordinates);
             GB_Options.Location = new Point(12, 49);
             GB_Options.Name = "GB_Options";
-            GB_Options.Size = new Size(538, 226);
+            GB_Options.Size = new Size(538, 254);
             GB_Options.TabIndex = 1;
             GB_Options.TabStop = false;
             GB_Options.Text = "Options";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(304, 89);
+            label2.Name = "label2";
+            label2.Size = new Size(107, 21);
+            label2.TabIndex = 10;
+            label2.Text = "PDF Page Size";
+            // 
+            // RB_PDF_UseRectSize
+            // 
+            RB_PDF_UseRectSize.AutoSize = true;
+            RB_PDF_UseRectSize.Checked = true;
+            RB_PDF_UseRectSize.Location = new Point(438, 113);
+            RB_PDF_UseRectSize.Name = "RB_PDF_UseRectSize";
+            RB_PDF_UseRectSize.Size = new Size(81, 19);
+            RB_PDF_UseRectSize.TabIndex = 9;
+            RB_PDF_UseRectSize.TabStop = true;
+            RB_PDF_UseRectSize.Text = "Image Size";
+            RB_PDF_UseRectSize.UseVisualStyleBackColor = true;
+            // 
+            // RB_PDF_UseA4
+            // 
+            RB_PDF_UseA4.AutoSize = true;
+            RB_PDF_UseA4.Location = new Point(438, 92);
+            RB_PDF_UseA4.Name = "RB_PDF_UseA4";
+            RB_PDF_UseA4.Size = new Size(39, 19);
+            RB_PDF_UseA4.TabIndex = 8;
+            RB_PDF_UseA4.TabStop = true;
+            RB_PDF_UseA4.Text = "A4";
+            RB_PDF_UseA4.UseVisualStyleBackColor = true;
             // 
             // L_FastAlert
             // 
             L_FastAlert.AutoSize = true;
             L_FastAlert.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            L_FastAlert.Location = new Point(12, 189);
+            L_FastAlert.Location = new Point(6, 220);
             L_FastAlert.Name = "L_FastAlert";
             L_FastAlert.Size = new Size(54, 21);
             L_FastAlert.TabIndex = 7;
@@ -95,17 +134,17 @@
             // 
             // PB
             // 
-            PB.Location = new Point(304, 89);
+            PB.Location = new Point(6, 182);
             PB.Name = "PB";
-            PB.Size = new Size(228, 28);
+            PB.Size = new Size(526, 28);
             PB.TabIndex = 6;
             // 
             // B_Start
             // 
-            B_Start.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            B_Start.Location = new Point(304, 123);
+            B_Start.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            B_Start.Location = new Point(304, 136);
             B_Start.Name = "B_Start";
-            B_Start.Size = new Size(228, 53);
+            B_Start.Size = new Size(228, 40);
             B_Start.TabIndex = 5;
             B_Start.Text = "Start";
             B_Start.UseVisualStyleBackColor = true;
@@ -172,7 +211,7 @@
             // 
             L_Picker.AutoSize = true;
             L_Picker.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            L_Picker.ForeColor = Color.Red;
+            L_Picker.ForeColor = SystemColors.GrayText;
             L_Picker.Location = new Point(7, 122);
             L_Picker.Name = "L_Picker";
             L_Picker.Size = new Size(0, 21);
@@ -260,7 +299,7 @@
             CB_TopMost.AutoSize = true;
             CB_TopMost.Checked = true;
             CB_TopMost.CheckState = CheckState.Checked;
-            CB_TopMost.Location = new Point(384, 285);
+            CB_TopMost.Location = new Point(384, 319);
             CB_TopMost.Name = "CB_TopMost";
             CB_TopMost.Size = new Size(80, 19);
             CB_TopMost.TabIndex = 2;
@@ -271,7 +310,7 @@
             // LL_SelfAd
             // 
             LL_SelfAd.AutoSize = true;
-            LL_SelfAd.Location = new Point(12, 292);
+            LL_SelfAd.Location = new Point(12, 320);
             LL_SelfAd.Name = "LL_SelfAd";
             LL_SelfAd.Size = new Size(65, 15);
             LL_SelfAd.TabIndex = 3;
@@ -282,7 +321,7 @@
             // B_TmpFolder
             // 
             B_TmpFolder.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            B_TmpFolder.Location = new Point(470, 281);
+            B_TmpFolder.Location = new Point(470, 314);
             B_TmpFolder.Name = "B_TmpFolder";
             B_TmpFolder.Size = new Size(80, 27);
             B_TmpFolder.TabIndex = 11;
@@ -303,7 +342,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(562, 312);
+            ClientSize = new Size(562, 348);
             Controls.Add(label1);
             Controls.Add(B_TmpFolder);
             Controls.Add(LL_SelfAd);
@@ -347,5 +386,8 @@
         private Label L_Picker;
         private Button B_TmpFolder;
         private Label label1;
+        private Label label2;
+        private RadioButton RB_PDF_UseRectSize;
+        private RadioButton RB_PDF_UseA4;
     }
 }
