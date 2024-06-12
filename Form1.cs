@@ -74,6 +74,8 @@ namespace zKitap2Pdf
 
         private async Task CaptureScreenshots(Rectangle roi, IProgress<int>? progress = null)
         {
+            bool isTmpDirectoryEmpty = !Directory.EnumerateFileSystemEntries("tmp").Any();
+            if(!isTmpDirectoryEmpty) Directory.EnumerateFiles("tmp", "*.png").ToList().ForEach(File.Delete); // Clear tmp directory
             Directory.CreateDirectory("tmp");
             int pageCount = (int)NUD_PageCount.Value;
 
@@ -133,7 +135,8 @@ namespace zKitap2Pdf
         }
 
         private async void B_Start_Click(object sender, EventArgs e)
-        {
+        {            
+
             if (NUD_PageCount.Value <= 0)
             {
                 FastAlert("Page count must be greater than 0.");
@@ -162,11 +165,21 @@ namespace zKitap2Pdf
                 });
             }));
 
+            try
+            {
+                Directory.EnumerateFiles("tmp", "*.png").ToList().ForEach(File.Delete);
+            } catch (Exception ex)
+            {
+                FastAlert(ex.Message);
+            }
+
             PB.Style = ProgressBarStyle.Marquee;
 
-            PDFUtil.ConvertImagesToPdf(Directory.GetFiles("tmp", "*.png"), "output.pdf", RB_PDF_UseA4.Checked ? PageSize.A4 : new PageSize(roi.Width, roi.Height));
+            string guid = Guid.NewGuid().ToString();
 
-            FastAlert("Done!");
+            await PDFUtil.ConvertImagesToPdf(Directory.GetFiles("tmp", "*.png"), $"{guid}.pdf", RB_PDF_UseA4.Checked ? PageSize.A4 : new PageSize(roi.Width, roi.Height));
+
+            FastAlert($"PDF File saved as {guid}.pdf, enjoy :>");
             B_Start.Enabled = true;
         }
 

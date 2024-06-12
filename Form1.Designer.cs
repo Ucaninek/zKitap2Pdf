@@ -186,7 +186,7 @@
             GB_Coordinates.Size = new Size(292, 154);
             GB_Coordinates.TabIndex = 0;
             GB_Coordinates.TabStop = false;
-            GB_Coordinates.Text = "Coordinates (click to pick)";
+            GB_Coordinates.Text = "Coordinates (double-click to pick)";
             // 
             // L_Picker
             // 
@@ -252,9 +252,9 @@
             L_NextPageXY.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             L_NextPageXY.Location = new Point(6, 86);
             L_NextPageXY.Name = "L_NextPageXY";
-            L_NextPageXY.Size = new Size(151, 21);
+            L_NextPageXY.Size = new Size(129, 21);
             L_NextPageXY.TabIndex = 5;
-            L_NextPageXY.Text = "Next Page Button ---";
+            L_NextPageXY.Text = "Next Page Button";
             // 
             // L_BottomRightXY
             // 
@@ -272,9 +272,9 @@
             L_TopLeftXY.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             L_TopLeftXY.Location = new Point(6, 21);
             L_TopLeftXY.Name = "L_TopLeftXY";
-            L_TopLeftXY.Size = new Size(142, 21);
+            L_TopLeftXY.Size = new Size(114, 21);
             L_TopLeftXY.TabIndex = 1;
-            L_TopLeftXY.Text = "Top-left Corner ----";
+            L_TopLeftXY.Text = "Top-left Corner";
             // 
             // CB_TopMost
             // 
@@ -316,9 +316,9 @@
             label1.AutoSize = true;
             label1.Location = new Point(153, 16);
             label1.Name = "label1";
-            label1.Size = new Size(311, 30);
+            label1.Size = new Size(303, 30);
             label1.TabIndex = 12;
-            label1.Text = "double-click on XY boxes to select individual coordinates.\r\na minimum delay of 100ms is recommended.\r\n";
+            label1.Text = "double-click on XY boxes to pick individual coordinates.\r\na minimum delay of 100ms is recommended.\r\n";
             // 
             // L_FastAlert
             // 

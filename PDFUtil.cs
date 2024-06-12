@@ -7,7 +7,7 @@ namespace zKitap2Pdf
 {
     internal class PDFUtil
     {
-        public static void ConvertImagesToPdf(string[] imagePaths, string outputFileName, PageSize pageSize)
+        public static async Task ConvertImagesToPdf(string[] imagePaths, string outputFileName, PageSize pageSize)
         {
             using (var pdfWriter = new PdfWriter(outputFileName))
             {
@@ -18,7 +18,7 @@ namespace zKitap2Pdf
 
                     foreach (var imagePath in imagePaths)
                     {
-                        var imageData = ImageDataFactory.Create(imagePath);
+                        var imageData = await Task.Run(() => ImageDataFactory.Create(imagePath));
                         var image = new iText.Layout.Element.Image(imageData);
                         document.Add(image);
                     }
