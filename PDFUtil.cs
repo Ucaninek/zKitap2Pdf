@@ -2,6 +2,7 @@
 using iText.Kernel.Geom;
 using iText.Kernel.Pdf;
 using iText.Layout;
+using iText.Layout.Element;
 using iText.Layout.Properties;
 using HorizontalAlignment = iText.Layout.Properties.HorizontalAlignment;
 
@@ -36,6 +37,9 @@ namespace zKitap2Pdf
                         image.SetHorizontalAlignment(HorizontalAlignment.CENTER);
 
                         document.Add(image);
+
+                        // Add a new page for the next image
+                        document.Add(new AreaBreak());
                     }
 
                     document.Close();
