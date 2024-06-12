@@ -223,8 +223,8 @@ namespace zKitap2Pdf
             Process.Start(new ProcessStartInfo()
             {
                 FileName = "explorer.exe",
-                Arguments = Path.GetDirectoryName(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)!, "PDFs"))
-            });;
+                Arguments = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)!, "PDFs")
+            });
         }
     }
 }
