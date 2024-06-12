@@ -28,16 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
+            L_Title = new Label();
             GB_Options = new GroupBox();
-            label3 = new Label();
-            progressBar1 = new ProgressBar();
+            L_FastAlert = new Label();
+            PB = new ProgressBar();
             B_Start = new Button();
             NUD_Delay = new NumericUpDown();
             NUD_PageCount = new NumericUpDown();
-            label6 = new Label();
-            label2 = new Label();
+            L_Delay = new Label();
+            L_PageCount = new Label();
             GB_Coordinates = new GroupBox();
+            L_Picker = new Label();
             B_PickAll = new Button();
             TB_NextPageXY = new TextBox();
             TB_BottomRightXY = new TextBox();
@@ -47,31 +48,33 @@
             L_TopLeftXY = new Label();
             CB_TopMost = new CheckBox();
             LL_SelfAd = new LinkLabel();
+            B_TmpFolder = new Button();
+            label1 = new Label();
             GB_Options.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)NUD_Delay).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NUD_PageCount).BeginInit();
             GB_Coordinates.SuspendLayout();
             SuspendLayout();
             // 
-            // label1
+            // L_Title
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(209, 9);
-            label1.Name = "label1";
-            label1.Size = new Size(144, 37);
-            label1.TabIndex = 0;
-            label1.Text = "zKitap2Pdf";
+            L_Title.AutoSize = true;
+            L_Title.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            L_Title.Location = new Point(12, 9);
+            L_Title.Name = "L_Title";
+            L_Title.Size = new Size(144, 37);
+            L_Title.TabIndex = 0;
+            L_Title.Text = "zKitap2Pdf";
             // 
             // GB_Options
             // 
-            GB_Options.Controls.Add(label3);
-            GB_Options.Controls.Add(progressBar1);
+            GB_Options.Controls.Add(L_FastAlert);
+            GB_Options.Controls.Add(PB);
             GB_Options.Controls.Add(B_Start);
             GB_Options.Controls.Add(NUD_Delay);
             GB_Options.Controls.Add(NUD_PageCount);
-            GB_Options.Controls.Add(label6);
-            GB_Options.Controls.Add(label2);
+            GB_Options.Controls.Add(L_Delay);
+            GB_Options.Controls.Add(L_PageCount);
             GB_Options.Controls.Add(GB_Coordinates);
             GB_Options.Location = new Point(12, 49);
             GB_Options.Name = "GB_Options";
@@ -80,29 +83,29 @@
             GB_Options.TabStop = false;
             GB_Options.Text = "Options";
             // 
-            // label3
+            // L_FastAlert
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(6, 189);
-            label3.Name = "label3";
-            label3.Size = new Size(52, 21);
-            label3.TabIndex = 7;
-            label3.Text = "label3";
+            L_FastAlert.AutoSize = true;
+            L_FastAlert.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            L_FastAlert.Location = new Point(12, 189);
+            L_FastAlert.Name = "L_FastAlert";
+            L_FastAlert.Size = new Size(54, 21);
+            L_FastAlert.TabIndex = 7;
+            L_FastAlert.Text = "(owo')";
             // 
-            // progressBar1
+            // PB
             // 
-            progressBar1.Location = new Point(304, 126);
-            progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(228, 50);
-            progressBar1.TabIndex = 6;
+            PB.Location = new Point(304, 89);
+            PB.Name = "PB";
+            PB.Size = new Size(228, 28);
+            PB.TabIndex = 6;
             // 
             // B_Start
             // 
-            B_Start.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            B_Start.Location = new Point(304, 89);
+            B_Start.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            B_Start.Location = new Point(304, 123);
             B_Start.Name = "B_Start";
-            B_Start.Size = new Size(228, 31);
+            B_Start.Size = new Size(228, 53);
             B_Start.TabIndex = 5;
             B_Start.Text = "Start";
             B_Start.UseVisualStyleBackColor = true;
@@ -117,7 +120,7 @@
             NUD_Delay.Name = "NUD_Delay";
             NUD_Delay.Size = new Size(83, 29);
             NUD_Delay.TabIndex = 4;
-            NUD_Delay.Value = new decimal(new int[] { 150, 0, 0, 0 });
+            NUD_Delay.Value = new decimal(new int[] { 75, 0, 0, 0 });
             // 
             // NUD_PageCount
             // 
@@ -128,28 +131,29 @@
             NUD_PageCount.Size = new Size(83, 29);
             NUD_PageCount.TabIndex = 3;
             // 
-            // label6
+            // L_Delay
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(304, 56);
-            label6.Name = "label6";
-            label6.Size = new Size(49, 21);
-            label6.TabIndex = 2;
-            label6.Text = "Delay";
+            L_Delay.AutoSize = true;
+            L_Delay.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            L_Delay.Location = new Point(304, 56);
+            L_Delay.Name = "L_Delay";
+            L_Delay.Size = new Size(49, 21);
+            L_Delay.TabIndex = 2;
+            L_Delay.Text = "Delay";
             // 
-            // label2
+            // L_PageCount
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(304, 22);
-            label2.Name = "label2";
-            label2.Size = new Size(124, 21);
-            label2.TabIndex = 0;
-            label2.Text = "Page Count (ms)";
+            L_PageCount.AutoSize = true;
+            L_PageCount.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            L_PageCount.Location = new Point(304, 22);
+            L_PageCount.Name = "L_PageCount";
+            L_PageCount.Size = new Size(124, 21);
+            L_PageCount.TabIndex = 0;
+            L_PageCount.Text = "Page Count (ms)";
             // 
             // GB_Coordinates
             // 
+            GB_Coordinates.Controls.Add(L_Picker);
             GB_Coordinates.Controls.Add(B_PickAll);
             GB_Coordinates.Controls.Add(TB_NextPageXY);
             GB_Coordinates.Controls.Add(TB_BottomRightXY);
@@ -164,12 +168,22 @@
             GB_Coordinates.TabStop = false;
             GB_Coordinates.Text = "Coordinates (click to pick)";
             // 
+            // L_Picker
+            // 
+            L_Picker.AutoSize = true;
+            L_Picker.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            L_Picker.ForeColor = Color.Red;
+            L_Picker.Location = new Point(7, 122);
+            L_Picker.Name = "L_Picker";
+            L_Picker.Size = new Size(0, 21);
+            L_Picker.TabIndex = 10;
+            // 
             // B_PickAll
             // 
             B_PickAll.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            B_PickAll.Location = new Point(6, 116);
+            B_PickAll.Location = new Point(214, 117);
             B_PickAll.Name = "B_PickAll";
-            B_PickAll.Size = new Size(280, 31);
+            B_PickAll.Size = new Size(72, 31);
             B_PickAll.TabIndex = 9;
             B_PickAll.Text = "Pick All";
             B_PickAll.UseVisualStyleBackColor = true;
@@ -178,7 +192,6 @@
             // TB_NextPageXY
             // 
             TB_NextPageXY.Cursor = Cursors.Hand;
-            TB_NextPageXY.Enabled = false;
             TB_NextPageXY.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             TB_NextPageXY.Location = new Point(164, 81);
             TB_NextPageXY.Name = "TB_NextPageXY";
@@ -186,11 +199,11 @@
             TB_NextPageXY.Size = new Size(122, 29);
             TB_NextPageXY.TabIndex = 8;
             TB_NextPageXY.Text = "X: ??? Y: ???";
+            TB_NextPageXY.DoubleClick += TB_NextPageXY_DoubleClick;
             // 
             // TB_BottomRightXY
             // 
             TB_BottomRightXY.Cursor = Cursors.Hand;
-            TB_BottomRightXY.Enabled = false;
             TB_BottomRightXY.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             TB_BottomRightXY.Location = new Point(164, 48);
             TB_BottomRightXY.Name = "TB_BottomRightXY";
@@ -198,11 +211,11 @@
             TB_BottomRightXY.Size = new Size(122, 29);
             TB_BottomRightXY.TabIndex = 7;
             TB_BottomRightXY.Text = "X: ??? Y: ???";
+            TB_BottomRightXY.DoubleClick += TB_BottomRightXY_DoubleClick;
             // 
             // TB_TopLeftXY
             // 
             TB_TopLeftXY.Cursor = Cursors.Hand;
-            TB_TopLeftXY.Enabled = false;
             TB_TopLeftXY.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             TB_TopLeftXY.Location = new Point(164, 16);
             TB_TopLeftXY.Name = "TB_TopLeftXY";
@@ -210,6 +223,7 @@
             TB_TopLeftXY.Size = new Size(122, 29);
             TB_TopLeftXY.TabIndex = 6;
             TB_TopLeftXY.Text = "X: ??? Y: ???";
+            TB_TopLeftXY.DoubleClick += TB_TopLeftXY_DoubleClick;
             // 
             // L_NextPageXY
             // 
@@ -257,7 +271,7 @@
             // LL_SelfAd
             // 
             LL_SelfAd.AutoSize = true;
-            LL_SelfAd.Location = new Point(12, 288);
+            LL_SelfAd.Location = new Point(12, 292);
             LL_SelfAd.Name = "LL_SelfAd";
             LL_SelfAd.Size = new Size(65, 15);
             LL_SelfAd.TabIndex = 3;
@@ -265,15 +279,37 @@
             LL_SelfAd.Text = "zemi.space";
             LL_SelfAd.LinkClicked += LL_SelfAd_LinkClicked;
             // 
+            // B_TmpFolder
+            // 
+            B_TmpFolder.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            B_TmpFolder.Location = new Point(384, 280);
+            B_TmpFolder.Name = "B_TmpFolder";
+            B_TmpFolder.Size = new Size(80, 27);
+            B_TmpFolder.TabIndex = 11;
+            B_TmpFolder.Text = "open temp";
+            B_TmpFolder.UseVisualStyleBackColor = true;
+            B_TmpFolder.Click += B_TmpFolder_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(162, 15);
+            label1.Name = "label1";
+            label1.Size = new Size(311, 30);
+            label1.TabIndex = 12;
+            label1.Text = "double-click on XY boxes to select individual coordinates.\r\na minimum delay of 75ms is recommended.";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(562, 312);
+            Controls.Add(label1);
+            Controls.Add(B_TmpFolder);
             Controls.Add(LL_SelfAd);
             Controls.Add(CB_TopMost);
             Controls.Add(GB_Options);
-            Controls.Add(label1);
+            Controls.Add(L_Title);
             Name = "Form1";
             Text = "zKitap2Pdf";
             TopMost = true;
@@ -289,15 +325,15 @@
 
         #endregion
 
-        private Label label1;
+        private Label L_Title;
         private GroupBox GB_Options;
         private GroupBox GB_Coordinates;
-        private Label label2;
+        private Label L_PageCount;
         private CheckBox CB_TopMost;
         private Label L_BottomRightXY;
         private Label L_TopLeftXY;
         private LinkLabel LL_SelfAd;
-        private Label label6;
+        private Label L_Delay;
         private Label L_NextPageXY;
         private TextBox TB_NextPageXY;
         private TextBox TB_BottomRightXY;
@@ -306,7 +342,10 @@
         private NumericUpDown NUD_Delay;
         private NumericUpDown NUD_PageCount;
         private Button B_Start;
-        private ProgressBar progressBar1;
-        private Label label3;
+        private ProgressBar PB;
+        private Label L_FastAlert;
+        private Label L_Picker;
+        private Button B_TmpFolder;
+        private Label label1;
     }
 }
