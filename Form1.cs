@@ -12,6 +12,7 @@ namespace zKitap2Pdf
 
     public partial class Form1 : Form
     {
+        string lastCreatedPDFPath;
         bool showMousePos = false;
         Point? TopLeft, BottomRight, NextPage, _pickedPoint;
         enum CurrentlyPicking { None, TopLeft, BottomRight, NextPage }
@@ -72,7 +73,7 @@ namespace zKitap2Pdf
         private async Task CaptureScreenshots(Rectangle roi, IProgress<int>? progress = null)
         {
             bool isTmpDirectoryEmpty = !Directory.EnumerateFileSystemEntries("tmp").Any();
-            if(!isTmpDirectoryEmpty) Directory.EnumerateFiles("tmp", "*.png").ToList().ForEach(File.Delete); // Clear tmp directory
+            if (!isTmpDirectoryEmpty) Directory.EnumerateFiles("tmp", "*.png").ToList().ForEach(File.Delete); // Clear tmp directory
             Directory.CreateDirectory("tmp");
             int pageCount = (int)NUD_PageCount.Value;
 
@@ -132,7 +133,7 @@ namespace zKitap2Pdf
         }
 
         private async void B_Start_Click(object sender, EventArgs e)
-        {            
+        {
 
             if (NUD_PageCount.Value <= 0)
             {
@@ -169,6 +170,9 @@ namespace zKitap2Pdf
             Directory.CreateDirectory("PDFs");
 
             await PDFUtil.ConvertImagesToPdf(Directory.GetFiles("tmp", "*.png"), Path.Combine("PDFs", $"{guid}.pdf"), RB_PDF_UseA4.Checked ? PageSize.A4 : new PageSize(roi.Width, roi.Height));
+
+            lastCreatedPDFPath = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)!, "PDFs", $"{guid}.pdf");
+            B_OpenPDF.Enabled = true;
 
             try
             {
@@ -227,6 +231,19 @@ namespace zKitap2Pdf
                 FileName = "explorer.exe",
                 Arguments = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)!, "PDFs")
             });
+        }
+
+        private void B_OpenPDF_Click(object sender, EventArgs e)
+        {
+            if(lastCreatedPDFPath != null)
+            {
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = "cmd.exe",
+                    CreateNoWindow = true,
+                    Arguments = $"/c start {lastCreatedPDFPath}"
+                });
+            }
         }
     }
 }

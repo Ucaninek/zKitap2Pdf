@@ -3,7 +3,6 @@ using iText.Kernel.Geom;
 using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
-using iText.Layout.Properties;
 using HorizontalAlignment = iText.Layout.Properties.HorizontalAlignment;
 
 namespace zKitap2Pdf

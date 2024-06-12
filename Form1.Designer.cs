@@ -53,6 +53,7 @@
             label1 = new Label();
             L_FastAlert = new Label();
             PB = new ProgressBar();
+            B_OpenPDF = new Button();
             GB_Options.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)NUD_Delay).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NUD_PageCount).BeginInit();
@@ -337,11 +338,24 @@
             PB.Size = new Size(538, 28);
             PB.TabIndex = 13;
             // 
+            // B_OpenPDF
+            // 
+            B_OpenPDF.Enabled = false;
+            B_OpenPDF.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            B_OpenPDF.Location = new Point(470, 281);
+            B_OpenPDF.Name = "B_OpenPDF";
+            B_OpenPDF.Size = new Size(80, 27);
+            B_OpenPDF.TabIndex = 15;
+            B_OpenPDF.Text = "Open PDF";
+            B_OpenPDF.UseVisualStyleBackColor = true;
+            B_OpenPDF.Click += B_OpenPDF_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(562, 348);
+            Controls.Add(B_OpenPDF);
             Controls.Add(L_FastAlert);
             Controls.Add(PB);
             Controls.Add(label1);
@@ -390,5 +404,6 @@
         private RadioButton RB_PDF_UseA4;
         private Label L_FastAlert;
         private ProgressBar PB;
+        private Button B_OpenPDF;
     }
 }
