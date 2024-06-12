@@ -109,7 +109,6 @@ namespace zKitap2Pdf
             TB_NextPageXY.Text = $"X: {NextPage!.Value.X}, Y: {NextPage!.Value.Y}";
 
             L_Picker.Text = "All Corners Picked!";
-            FastAlert("Yay!!");
         }
 
         private void MouseHook_PointPicked(object? sender, Point e)
