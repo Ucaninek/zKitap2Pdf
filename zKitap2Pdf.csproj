@@ -8,4 +8,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="dot-net-transitions" Version="1.2.1" />
+  </ItemGroup>
+
 </Project>
