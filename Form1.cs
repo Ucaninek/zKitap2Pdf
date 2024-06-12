@@ -162,24 +162,26 @@ namespace zKitap2Pdf
                 });
             }));
 
-            try
-            {
-                Directory.EnumerateFiles("tmp", "*.png").ToList().ForEach(File.Delete);
-            } catch (Exception ex)
-            {
-                FastAlert(ex.Message);
-            }
-
             PB.Style = ProgressBarStyle.Marquee;
 
-            string guid = Guid.NewGuid().ToString();
+            string guid = Guid.NewGuid().ToString("N").Replace("-", "").Substring(0, 12); //create a 12 character guid that has no hypens
 
             Directory.CreateDirectory("PDFs");
 
             await PDFUtil.ConvertImagesToPdf(Directory.GetFiles("tmp", "*.png"), Path.Combine("PDFs", $"{guid}.pdf"), RB_PDF_UseA4.Checked ? PageSize.A4 : new PageSize(roi.Width, roi.Height));
 
-            FastAlert($"PDF File saved as {guid}.pdf, enjoy :>");
-            GB_Options.Enabled = true;
+            try
+            {
+                Directory.EnumerateFiles("tmp", "*.png").ToList().ForEach(File.Delete);
+                FastAlert($"PDF File saved as {guid}.pdf, enjoy :>");
+                GB_Options.Enabled = true;
+                PB.Style = ProgressBarStyle.Blocks;
+                PB.Value = 0;
+            }
+            catch (Exception ex)
+            {
+                FastAlert(ex.Message);
+            }
         }
 
         private void FastAlert(string message)
