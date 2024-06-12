@@ -157,9 +157,9 @@
             L_Delay.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             L_Delay.Location = new Point(304, 56);
             L_Delay.Name = "L_Delay";
-            L_Delay.Size = new Size(49, 21);
+            L_Delay.Size = new Size(84, 21);
             L_Delay.TabIndex = 2;
-            L_Delay.Text = "Delay";
+            L_Delay.Text = "Delay (ms)";
             // 
             // L_PageCount
             // 
@@ -167,9 +167,9 @@
             L_PageCount.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             L_PageCount.Location = new Point(304, 22);
             L_PageCount.Name = "L_PageCount";
-            L_PageCount.Size = new Size(124, 21);
+            L_PageCount.Size = new Size(89, 21);
             L_PageCount.TabIndex = 0;
-            L_PageCount.Text = "Page Count (ms)";
+            L_PageCount.Text = "Page Count";
             // 
             // GB_Coordinates
             // 

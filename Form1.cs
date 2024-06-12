@@ -164,7 +164,7 @@ namespace zKitap2Pdf
 
             PB.Style = ProgressBarStyle.Marquee;
 
-            string guid = Guid.NewGuid().ToString("N").Replace("-", "").Substring(0, 12); //create a 12 character guid that has no hypens
+            string guid = Guid.NewGuid().ToString("N").Replace("-", "").Substring(0, 16); //create a 16 character guid that has no hypens
 
             Directory.CreateDirectory("PDFs");
 

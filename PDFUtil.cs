@@ -2,6 +2,8 @@
 using iText.Kernel.Geom;
 using iText.Kernel.Pdf;
 using iText.Layout;
+using iText.Layout.Properties;
+using HorizontalAlignment = iText.Layout.Properties.HorizontalAlignment;
 
 namespace zKitap2Pdf
 {
@@ -20,6 +22,19 @@ namespace zKitap2Pdf
                     {
                         var imageData = await Task.Run(() => ImageDataFactory.Create(imagePath));
                         var image = new iText.Layout.Element.Image(imageData);
+
+                        // Calculate the image dimensions and position
+                        float imageWidth = image.GetImageScaledWidth();
+                        float imageHeight = image.GetImageScaledHeight();
+                        float pageWidth = pageSize.GetWidth();
+                        float pageHeight = pageSize.GetHeight();
+                        float x = (pageWidth - imageWidth) / 2;
+                        float y = (pageHeight - imageHeight) / 2;
+
+                        // Set the image position and alignment
+                        image.SetFixedPosition(x, y);
+                        image.SetHorizontalAlignment(HorizontalAlignment.CENTER);
+
                         document.Add(image);
                     }
 
