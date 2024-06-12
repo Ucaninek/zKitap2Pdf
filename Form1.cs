@@ -1,109 +1,27 @@
-﻿using System.Diagnostics;
-using System.Drawing.Imaging;
-using Transitions;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Diagnostics;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace zKitap2Pdf
 {
-
-
     public partial class Form1 : Form
     {
-        bool showMousePos = false;
-        Point? TopLeft, BottomRight, NextPage, _pickedPoint;
-        enum CurrentlyPicking { None, TopLeft, BottomRight, NextPage }
-
         public Form1()
         {
             InitializeComponent();
             MouseHook.PointPicked += MouseHook_PointPicked;
-            MouseHook.MouseMoved += MouseHook_MouseMoved;
         }
 
-        private void MouseHook_MouseMoved(object? sender, Point e)
+        private void B_PickAll_Click(object sender, EventArgs e)
         {
-            if (showMousePos)
-            {
-                L_Picker.Text = $"Picking (X: {e.X}, Y: {e.Y})";
-            }
-        }
-
-        private async Task<Point?> PickXY()
-        {
-            _pickedPoint = null;
             MouseHook.StartPicking();
-            while (_pickedPoint == null)
-            {
-                await Task.Delay(100);
-            }
-
-            return _pickedPoint;
-        }
-
-        private async Task PickCorner(CurrentlyPicking picking)
-        {
-            if (picking == CurrentlyPicking.None) return;
-
-            L_Picker.Text = "Picking...";
-            showMousePos = true;
-
-            Point picked = (await PickXY()).Value;
-
-            switch (picking)
-            {
-                case CurrentlyPicking.TopLeft:
-                    TopLeft = picked;
-                    break;
-                case CurrentlyPicking.BottomRight:
-                    BottomRight = picked;
-                    break;
-                case CurrentlyPicking.NextPage:
-                    NextPage = picked;
-                    break;
-            }
-
-            showMousePos = false;
-            L_Picker.Text = $"Picked {picking}";
-        }
-
-        private async Task CaptureScreenshots(IProgress<int>? progress = null)
-        {
-            Directory.CreateDirectory("tmp");
-            Rectangle rect = new Rectangle(TopLeft!.Value, new Size(BottomRight!.Value.X - TopLeft.Value.X, BottomRight.Value.Y - TopLeft.Value.Y));
-            int pageCount = (int)NUD_PageCount.Value;
-
-            for (int i = 0; i < pageCount; i++)
-            {
-                Bitmap screenshot = ScreenshotHelper.CaptureScreenshot(rect);
-                screenshot.Save($"tmp/{i}.png", ImageFormat.Png);
-
-                MouseUtil.Click(NextPage!.Value.X, NextPage!.Value.Y);
-
-                if (progress != null)
-                {
-                    int percentComplete = ((i + 1) * 100) / pageCount;
-                    progress.Report(percentComplete);
-                }
-
-                await Task.Delay((int)NUD_Delay.Value);
-            }
-        }
-
-        private async void B_PickAll_Click(object sender, EventArgs e)
-        {
-            await PickCorner(CurrentlyPicking.TopLeft);
-
-            TB_TopLeftXY.Text = $"X: {TopLeft!.Value.X}, Y: {TopLeft!.Value.Y}";
-
-            await PickCorner(CurrentlyPicking.BottomRight);
-
-            TB_BottomRightXY.Text = $"X: {BottomRight!.Value.X}, Y: {BottomRight!.Value.Y}";
-
-            await PickCorner(CurrentlyPicking.NextPage);
-
-            TB_NextPageXY.Text = $"X: {NextPage!.Value.X}, Y: {NextPage!.Value.Y}";
-
-            L_Picker.Text = "All Corners Picked!";
-            FastAlert("Yay!!");
         }
 
         private async void B_PickAll_Click(object sender, EventArgs e)
@@ -125,7 +43,7 @@ namespace zKitap2Pdf
 
         private void MouseHook_PointPicked(object? sender, Point e)
         {
-            _pickedPoint = e;
+
         }
 
         private void CB_TopMost_CheckedChanged(object sender, EventArgs e)
@@ -144,37 +62,12 @@ namespace zKitap2Pdf
             Process.Start(psi);
         }
 
-        private async void B_Start_Click(object sender, EventArgs e)
+        private void B_Start_Click(object sender, EventArgs e)
         {
-            if (NUD_PageCount.Value <= 0)
+            if(NUD_PageCount.Value <= 0)
             {
-                FastAlert("Page count must be greater than 0.");
-                return;
+                
             }
-
-            if (TopLeft == null || BottomRight == null || NextPage == null)
-            {
-                FastAlert("All corners must be set properly.");
-                return;
-            }
-
-            if (!TopLeftAndBottomRightMatches())
-            {
-                FastAlert("Top Left and Bottom Right corners must be set properly.");
-                return;
-            }
-
-            B_Start.Enabled = false;
-            await CaptureScreenshots(new Progress<int>(percentComplete =>
-            {
-                PB.Invoke((MethodInvoker)delegate
-                {
-                    PB.Value = percentComplete;
-                });
-            }));
-
-            FastAlert("Done!");
-            B_Start.Enabled = true;
         }
 
             B_Start.Enabled = false;
@@ -192,46 +85,7 @@ namespace zKitap2Pdf
 
         private void FastAlert(string message)
         {
-            L_FastAlert.Text = message;
-            Transition t = new(new TransitionType_Flash(3, 300));
-            t.add(L_FastAlert, "ForeColor", Color.Red);
-            t.run();
-        }
 
-        private bool TopLeftAndBottomRightMatches()
-        {
-            if (TopLeft != null && BottomRight != null)
-            {
-                return TopLeft.Value.X < BottomRight.Value.X && TopLeft.Value.Y < BottomRight.Value.Y;
-            }
-            return false;
-        }
-
-        private async void TB_TopLeftXY_DoubleClick(object sender, EventArgs e)
-        {
-            await PickCorner(CurrentlyPicking.TopLeft);
-            TB_TopLeftXY.Text = $"X: {TopLeft!.Value.X}, Y: {TopLeft!.Value.Y}";
-        }
-
-        private async void TB_BottomRightXY_DoubleClick(object sender, EventArgs e)
-        {
-            await PickCorner(CurrentlyPicking.BottomRight);
-            TB_BottomRightXY.Text = $"X: {BottomRight!.Value.X}, Y: {BottomRight!.Value.Y}";
-        }
-
-        private async void TB_NextPageXY_DoubleClick(object sender, EventArgs e)
-        {
-            await PickCorner(CurrentlyPicking.NextPage);
-            TB_NextPageXY.Text = $"X: {NextPage!.Value.X}, Y: {NextPage!.Value.Y}";
-        }
-
-        private void B_TmpFolder_Click(object sender, EventArgs e)
-        {
-            Process.Start(new ProcessStartInfo()
-            {
-                FileName = "explorer.exe",
-                Arguments = Path.GetDirectoryName(Application.ExecutablePath)
-            });
         }
     }
 }
