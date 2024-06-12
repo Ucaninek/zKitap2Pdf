@@ -19,8 +19,9 @@ namespace zKitap2Pdf
                     var document = new Document(pdfDocument, pageSize);
                     document.SetMargins(0f, 0f, 0f, 0f);
 
-                    foreach (var imagePath in imagePaths)
+                    for (int i = 0; i < imagePaths.Length; i++)
                     {
+                        var imagePath = imagePaths[i];
                         var imageData = await Task.Run(() => ImageDataFactory.Create(imagePath));
                         var image = new iText.Layout.Element.Image(imageData);
 
@@ -38,8 +39,11 @@ namespace zKitap2Pdf
 
                         document.Add(image);
 
-                        // Add a new page for the next image
-                        document.Add(new AreaBreak());
+                        // Add a new page for the next image if it's not the last image
+                        if (i < imagePaths.Length - 1)
+                        {
+                            document.Add(new AreaBreak());
+                        }
                     }
 
                     document.Close();
