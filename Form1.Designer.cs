@@ -120,7 +120,7 @@
             NUD_Delay.Name = "NUD_Delay";
             NUD_Delay.Size = new Size(83, 29);
             NUD_Delay.TabIndex = 4;
-            NUD_Delay.Value = new decimal(new int[] { 75, 0, 0, 0 });
+            NUD_Delay.Value = new decimal(new int[] { 100, 0, 0, 0 });
             // 
             // NUD_PageCount
             // 
@@ -295,9 +295,9 @@
             label1.AutoSize = true;
             label1.Location = new Point(162, 15);
             label1.Name = "label1";
-            label1.Size = new Size(311, 30);
+            label1.Size = new Size(311, 45);
             label1.TabIndex = 12;
-            label1.Text = "double-click on XY boxes to select individual coordinates.\r\na minimum delay of 75ms is recommended.";
+            label1.Text = "double-click on XY boxes to select individual coordinates.\r\na minimum delay of 100\r\nms is recommended.";
             // 
             // Form1
             // 
