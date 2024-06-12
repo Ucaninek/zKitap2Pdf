@@ -155,7 +155,7 @@ namespace zKitap2Pdf
                 return;
             }
 
-            B_Start.Enabled = false;
+            GB_Options.Enabled = false;
             Rectangle roi = new Rectangle(TopLeft!.Value, new Size(BottomRight!.Value.X - TopLeft.Value.X, BottomRight.Value.Y - TopLeft.Value.Y));
             await CaptureScreenshots(roi, new Progress<int>(percentComplete =>
             {
@@ -177,10 +177,12 @@ namespace zKitap2Pdf
 
             string guid = Guid.NewGuid().ToString();
 
-            await PDFUtil.ConvertImagesToPdf(Directory.GetFiles("tmp", "*.png"), $"{guid}.pdf", RB_PDF_UseA4.Checked ? PageSize.A4 : new PageSize(roi.Width, roi.Height));
+            Directory.CreateDirectory("PDFs");
+
+            await PDFUtil.ConvertImagesToPdf(Directory.GetFiles("tmp", "*.png"), Path.Combine("PDFs", $"{guid}.pdf"), RB_PDF_UseA4.Checked ? PageSize.A4 : new PageSize(roi.Width, roi.Height));
 
             FastAlert($"PDF File saved as {guid}.pdf, enjoy :>");
-            B_Start.Enabled = true;
+            GB_Options.Enabled = true;
         }
 
         private void FastAlert(string message)
@@ -220,11 +222,12 @@ namespace zKitap2Pdf
 
         private void B_TmpFolder_Click(object sender, EventArgs e)
         {
+            Directory.CreateDirectory("PDFs");
             Process.Start(new ProcessStartInfo()
             {
                 FileName = "explorer.exe",
-                Arguments = Path.GetDirectoryName(Application.ExecutablePath)
-            });
+                Arguments = Path.GetDirectoryName(Path.Combine(Application.ExecutablePath, "PDFs"))
+            });;
         }
     }
 }

@@ -307,7 +307,7 @@
             B_TmpFolder.Name = "B_TmpFolder";
             B_TmpFolder.Size = new Size(80, 27);
             B_TmpFolder.TabIndex = 11;
-            B_TmpFolder.Text = "open temp";
+            B_TmpFolder.Text = "Open PDFs";
             B_TmpFolder.UseVisualStyleBackColor = true;
             B_TmpFolder.Click += B_TmpFolder_Click;
             // 
