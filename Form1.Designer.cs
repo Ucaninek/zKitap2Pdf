@@ -260,7 +260,7 @@
             CB_TopMost.AutoSize = true;
             CB_TopMost.Checked = true;
             CB_TopMost.CheckState = CheckState.Checked;
-            CB_TopMost.Location = new Point(470, 288);
+            CB_TopMost.Location = new Point(384, 285);
             CB_TopMost.Name = "CB_TopMost";
             CB_TopMost.Size = new Size(80, 19);
             CB_TopMost.TabIndex = 2;
@@ -282,7 +282,7 @@
             // B_TmpFolder
             // 
             B_TmpFolder.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            B_TmpFolder.Location = new Point(384, 280);
+            B_TmpFolder.Location = new Point(470, 281);
             B_TmpFolder.Name = "B_TmpFolder";
             B_TmpFolder.Size = new Size(80, 27);
             B_TmpFolder.TabIndex = 11;
