@@ -159,6 +159,10 @@ namespace zKitap2Pdf
                 });
             }));
 
+            PB.Style = ProgressBarStyle.Marquee;
+
+            PDFUtil.ConvertImagesToPdf(Directory.GetFiles("tmp", "*.png"), "output.pdf");
+
             FastAlert("Done!");
             B_Start.Enabled = true;
         }
@@ -166,7 +170,7 @@ namespace zKitap2Pdf
         private void FastAlert(string message)
         {
             L_FastAlert.Text = message;
-            Transition t = new(new TransitionType_Flash(3, 300));
+            Transition t = new(new TransitionType_Flash(1, 300));
             t.add(L_FastAlert, "ForeColor", Color.Red);
             t.run();
         }

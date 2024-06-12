@@ -293,11 +293,11 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(162, 15);
+            label1.Location = new Point(153, 16);
             label1.Name = "label1";
-            label1.Size = new Size(311, 45);
+            label1.Size = new Size(311, 30);
             label1.TabIndex = 12;
-            label1.Text = "double-click on XY boxes to select individual coordinates.\r\na minimum delay of 100\r\nms is recommended.";
+            label1.Text = "double-click on XY boxes to select individual coordinates.\r\na minimum delay of 100ms is recommended.\r\n";
             // 
             // Form1
             // 
