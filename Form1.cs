@@ -106,6 +106,23 @@ namespace zKitap2Pdf
             FastAlert("Yay!!");
         }
 
+        private async void B_PickAll_Click(object sender, EventArgs e)
+        {
+            _pickedPoint = e;
+            TB_TopLeftXY.Text = $"X: {TopLeft!.Value.X}, Y: {TopLeft!.Value.Y}";
+
+            await PickCorner(CurrentlyPicking.BottomRight);
+
+            TB_BottomRightXY.Text = $"X: {BottomRight!.Value.X}, Y: {BottomRight!.Value.Y}";
+
+            await PickCorner(CurrentlyPicking.NextPage);
+
+            TB_NextPageXY.Text = $"X: {NextPage!.Value.X}, Y: {NextPage!.Value.Y}";
+
+            L_Picker.Text = "All Corners Picked!";
+            FastAlert("Yay!!");
+        }
+
         private void MouseHook_PointPicked(object? sender, Point e)
         {
             _pickedPoint = e;
@@ -146,6 +163,19 @@ namespace zKitap2Pdf
                 FastAlert("Top Left and Bottom Right corners must be set properly.");
                 return;
             }
+
+            B_Start.Enabled = false;
+            await CaptureScreenshots(new Progress<int>(percentComplete =>
+            {
+                PB.Invoke((MethodInvoker)delegate
+                {
+                    PB.Value = percentComplete;
+                });
+            }));
+
+            FastAlert("Done!");
+            B_Start.Enabled = true;
+        }
 
             B_Start.Enabled = false;
             await CaptureScreenshots(new Progress<int>(percentComplete =>
