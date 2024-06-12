@@ -15,7 +15,6 @@ namespace zKitap2Pdf
         bool showMousePos = false;
         Point? TopLeft, BottomRight, NextPage, _pickedPoint;
         enum CurrentlyPicking { None, TopLeft, BottomRight, NextPage }
-        CurrentlyPicking currentlyPicking = CurrentlyPicking.None;
 
         public Form1()
         {
@@ -47,8 +46,6 @@ namespace zKitap2Pdf
         private async Task PickCorner(CurrentlyPicking picking)
         {
             if (picking == CurrentlyPicking.None) return;
-
-            currentlyPicking = picking;
 
             L_Picker.Text = "Picking...";
             showMousePos = true;
@@ -226,7 +223,7 @@ namespace zKitap2Pdf
             Process.Start(new ProcessStartInfo()
             {
                 FileName = "explorer.exe",
-                Arguments = Path.GetDirectoryName(Path.Combine(Application.ExecutablePath, "PDFs"))
+                Arguments = Path.GetDirectoryName(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)!, "PDFs"))
             });;
         }
     }
