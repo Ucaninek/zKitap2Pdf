@@ -19,20 +19,10 @@ namespace zKitap2Pdf
             for (int i = 0; i < imagePaths.Length; i++)
             {
                 var imagePath = imagePaths[i];
-                var imageData = await Task.Run(() => ImageDataFactory.Create(imagePath));
+                var imageData = await CreateImageFromPath(imagePath);
                 var image = new iText.Layout.Element.Image(imageData);
 
-                // Calculate the image dimensions and position
-                float imageWidth = image.GetImageScaledWidth();
-                float imageHeight = image.GetImageScaledHeight();
-                float pageWidth = pageSize.GetWidth();
-                float pageHeight = pageSize.GetHeight();
-                float x = (pageWidth - imageWidth) / 2;
-                float y = (pageHeight - imageHeight) / 2;
-
-                // Set the image position and alignment
-                image.SetFixedPosition(x, y);
-                image.SetHorizontalAlignment(HorizontalAlignment.CENTER);
+                PositionImageOnPage(ref image, pageSize);
 
                 document.Add(image);
 
@@ -44,6 +34,27 @@ namespace zKitap2Pdf
             }
 
             document.Close();
+        }
+
+        private static async Task<ImageData> CreateImageFromPath(string imagePath)
+        {
+            var imageData = await Task.Run(() => ImageDataFactory.Create(imagePath));
+            return imageData;
+        }
+
+        private static void PositionImageOnPage(ref iText.Layout.Element.Image image, PageSize pageSize)
+        {
+            // Calculate the image dimensions and position
+            float imageWidth = image.GetImageScaledWidth();
+            float imageHeight = image.GetImageScaledHeight();
+            float pageWidth = pageSize.GetWidth();
+            float pageHeight = pageSize.GetHeight();
+            float x = (pageWidth - imageWidth) / 2;
+            float y = (pageHeight - imageHeight) / 2;
+
+            // Set the image position and alignment
+            image.SetFixedPosition(x, y);
+            image.SetHorizontalAlignment(HorizontalAlignment.CENTER);
         }
     }
 }
