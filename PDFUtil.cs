@@ -11,43 +11,39 @@ namespace zKitap2Pdf
     {
         public static async Task ConvertImagesToPdf(string[] imagePaths, string outputFileName, PageSize pageSize)
         {
-            using (var pdfWriter = new PdfWriter(outputFileName))
+            using var pdfWriter = new PdfWriter(outputFileName);
+            using var pdfDocument = new PdfDocument(pdfWriter);
+            var document = new Document(pdfDocument, pageSize);
+            document.SetMargins(0f, 0f, 0f, 0f);
+
+            for (int i = 0; i < imagePaths.Length; i++)
             {
-                using (var pdfDocument = new PdfDocument(pdfWriter))
+                var imagePath = imagePaths[i];
+                var imageData = await Task.Run(() => ImageDataFactory.Create(imagePath));
+                var image = new iText.Layout.Element.Image(imageData);
+
+                // Calculate the image dimensions and position
+                float imageWidth = image.GetImageScaledWidth();
+                float imageHeight = image.GetImageScaledHeight();
+                float pageWidth = pageSize.GetWidth();
+                float pageHeight = pageSize.GetHeight();
+                float x = (pageWidth - imageWidth) / 2;
+                float y = (pageHeight - imageHeight) / 2;
+
+                // Set the image position and alignment
+                image.SetFixedPosition(x, y);
+                image.SetHorizontalAlignment(HorizontalAlignment.CENTER);
+
+                document.Add(image);
+
+                // Add a new page for the next image if it's not the last image
+                if (i < imagePaths.Length - 1)
                 {
-                    var document = new Document(pdfDocument, pageSize);
-                    document.SetMargins(0f, 0f, 0f, 0f);
-
-                    for (int i = 0; i < imagePaths.Length; i++)
-                    {
-                        var imagePath = imagePaths[i];
-                        var imageData = await Task.Run(() => ImageDataFactory.Create(imagePath));
-                        var image = new iText.Layout.Element.Image(imageData);
-
-                        // Calculate the image dimensions and position
-                        float imageWidth = image.GetImageScaledWidth();
-                        float imageHeight = image.GetImageScaledHeight();
-                        float pageWidth = pageSize.GetWidth();
-                        float pageHeight = pageSize.GetHeight();
-                        float x = (pageWidth - imageWidth) / 2;
-                        float y = (pageHeight - imageHeight) / 2;
-
-                        // Set the image position and alignment
-                        image.SetFixedPosition(x, y);
-                        image.SetHorizontalAlignment(HorizontalAlignment.CENTER);
-
-                        document.Add(image);
-
-                        // Add a new page for the next image if it's not the last image
-                        if (i < imagePaths.Length - 1)
-                        {
-                            document.Add(new AreaBreak());
-                        }
-                    }
-
-                    document.Close();
+                    document.Add(new AreaBreak());
                 }
             }
+
+            document.Close();
         }
     }
 }

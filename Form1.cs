@@ -12,7 +12,7 @@ namespace zKitap2Pdf
 
     public partial class Form1 : Form
     {
-        string lastCreatedPDFPath;
+        string? lastCreatedPDFPath;
         bool showMousePos = false;
         Point? TopLeft, BottomRight, NextPage, _pickedPoint;
         enum CurrentlyPicking { None, TopLeft, BottomRight, NextPage }
@@ -154,7 +154,7 @@ namespace zKitap2Pdf
             }
 
             GB_Options.Enabled = false;
-            Rectangle roi = new Rectangle(TopLeft!.Value, new Size(BottomRight!.Value.X - TopLeft.Value.X, BottomRight.Value.Y - TopLeft.Value.Y));
+            Rectangle roi = new(TopLeft!.Value, new Size(BottomRight!.Value.X - TopLeft.Value.X, BottomRight.Value.Y - TopLeft.Value.Y));
             await CaptureScreenshots(roi, new Progress<int>(percentComplete =>
             {
                 PB.Invoke((MethodInvoker)delegate
@@ -165,7 +165,7 @@ namespace zKitap2Pdf
 
             PB.Style = ProgressBarStyle.Marquee;
 
-            string guid = Guid.NewGuid().ToString("N").Replace("-", "").Substring(0, 16); //create a 16 character guid that has no hypens
+            string guid = Guid.NewGuid().ToString("N").Replace("-", "")[..16]; //create a 16 character guid that has no hypens
 
             Directory.CreateDirectory("PDFs");
 
