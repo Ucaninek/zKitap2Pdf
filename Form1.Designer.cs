@@ -95,7 +95,7 @@
             label2.Location = new Point(304, 89);
             label2.Name = "label2";
             label2.Size = new Size(107, 21);
-            label2.TabIndex = 10;
+            label2.TabIndex = 12;
             label2.Text = "PDF Page Size";
             // 
             // RB_PDF_UseRectSize
@@ -105,7 +105,7 @@
             RB_PDF_UseRectSize.Location = new Point(438, 113);
             RB_PDF_UseRectSize.Name = "RB_PDF_UseRectSize";
             RB_PDF_UseRectSize.Size = new Size(81, 19);
-            RB_PDF_UseRectSize.TabIndex = 9;
+            RB_PDF_UseRectSize.TabIndex = 14;
             RB_PDF_UseRectSize.TabStop = true;
             RB_PDF_UseRectSize.Text = "Image Size";
             RB_PDF_UseRectSize.UseVisualStyleBackColor = true;
@@ -116,7 +116,7 @@
             RB_PDF_UseA4.Location = new Point(438, 92);
             RB_PDF_UseA4.Name = "RB_PDF_UseA4";
             RB_PDF_UseA4.Size = new Size(39, 19);
-            RB_PDF_UseA4.TabIndex = 8;
+            RB_PDF_UseA4.TabIndex = 13;
             RB_PDF_UseA4.TabStop = true;
             RB_PDF_UseA4.Text = "A4";
             RB_PDF_UseA4.UseVisualStyleBackColor = true;
@@ -127,7 +127,7 @@
             B_Start.Location = new Point(304, 136);
             B_Start.Name = "B_Start";
             B_Start.Size = new Size(228, 40);
-            B_Start.TabIndex = 5;
+            B_Start.TabIndex = 15;
             B_Start.Text = "Start";
             B_Start.UseVisualStyleBackColor = true;
             B_Start.Click += B_Start_Click;
@@ -140,7 +140,7 @@
             NUD_Delay.Maximum = new decimal(new int[] { 5000, 0, 0, 0 });
             NUD_Delay.Name = "NUD_Delay";
             NUD_Delay.Size = new Size(83, 29);
-            NUD_Delay.TabIndex = 4;
+            NUD_Delay.TabIndex = 11;
             NUD_Delay.Value = new decimal(new int[] { 100, 0, 0, 0 });
             // 
             // NUD_PageCount
@@ -150,7 +150,7 @@
             NUD_PageCount.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
             NUD_PageCount.Name = "NUD_PageCount";
             NUD_PageCount.Size = new Size(83, 29);
-            NUD_PageCount.TabIndex = 3;
+            NUD_PageCount.TabIndex = 9;
             // 
             // L_Delay
             // 
@@ -159,7 +159,7 @@
             L_Delay.Location = new Point(304, 56);
             L_Delay.Name = "L_Delay";
             L_Delay.Size = new Size(84, 21);
-            L_Delay.TabIndex = 2;
+            L_Delay.TabIndex = 10;
             L_Delay.Text = "Delay (ms)";
             // 
             // L_PageCount
@@ -169,7 +169,7 @@
             L_PageCount.Location = new Point(304, 22);
             L_PageCount.Name = "L_PageCount";
             L_PageCount.Size = new Size(89, 21);
-            L_PageCount.TabIndex = 0;
+            L_PageCount.TabIndex = 8;
             L_PageCount.Text = "Page Count";
             // 
             // GB_Coordinates
@@ -197,7 +197,7 @@
             L_Picker.Location = new Point(7, 122);
             L_Picker.Name = "L_Picker";
             L_Picker.Size = new Size(75, 21);
-            L_Picker.TabIndex = 10;
+            L_Picker.TabIndex = 6;
             L_Picker.Text = "(✿◡‿◡)";
             // 
             // B_PickAll
@@ -206,7 +206,7 @@
             B_PickAll.Location = new Point(214, 117);
             B_PickAll.Name = "B_PickAll";
             B_PickAll.Size = new Size(72, 31);
-            B_PickAll.TabIndex = 9;
+            B_PickAll.TabIndex = 7;
             B_PickAll.Text = "Pick All";
             B_PickAll.UseVisualStyleBackColor = true;
             B_PickAll.Click += B_PickAll_Click;
@@ -219,7 +219,7 @@
             TB_NextPageXY.Name = "TB_NextPageXY";
             TB_NextPageXY.ReadOnly = true;
             TB_NextPageXY.Size = new Size(122, 29);
-            TB_NextPageXY.TabIndex = 8;
+            TB_NextPageXY.TabIndex = 5;
             TB_NextPageXY.Text = "X: ??? Y: ???";
             TB_NextPageXY.DoubleClick += TB_NextPageXY_DoubleClick;
             // 
@@ -231,7 +231,7 @@
             TB_BottomRightXY.Name = "TB_BottomRightXY";
             TB_BottomRightXY.ReadOnly = true;
             TB_BottomRightXY.Size = new Size(122, 29);
-            TB_BottomRightXY.TabIndex = 7;
+            TB_BottomRightXY.TabIndex = 3;
             TB_BottomRightXY.Text = "X: ??? Y: ???";
             TB_BottomRightXY.DoubleClick += TB_BottomRightXY_DoubleClick;
             // 
@@ -243,7 +243,7 @@
             TB_TopLeftXY.Name = "TB_TopLeftXY";
             TB_TopLeftXY.ReadOnly = true;
             TB_TopLeftXY.Size = new Size(122, 29);
-            TB_TopLeftXY.TabIndex = 6;
+            TB_TopLeftXY.TabIndex = 1;
             TB_TopLeftXY.Text = "X: ??? Y: ???";
             TB_TopLeftXY.DoubleClick += TB_TopLeftXY_DoubleClick;
             // 
@@ -254,7 +254,7 @@
             L_NextPageXY.Location = new Point(6, 86);
             L_NextPageXY.Name = "L_NextPageXY";
             L_NextPageXY.Size = new Size(129, 21);
-            L_NextPageXY.TabIndex = 5;
+            L_NextPageXY.TabIndex = 4;
             L_NextPageXY.Text = "Next Page Button";
             // 
             // L_BottomRightXY
@@ -264,7 +264,7 @@
             L_BottomRightXY.Location = new Point(6, 52);
             L_BottomRightXY.Name = "L_BottomRightXY";
             L_BottomRightXY.Size = new Size(152, 21);
-            L_BottomRightXY.TabIndex = 3;
+            L_BottomRightXY.TabIndex = 2;
             L_BottomRightXY.Text = "Bottom-right Corner";
             // 
             // L_TopLeftXY
@@ -274,7 +274,7 @@
             L_TopLeftXY.Location = new Point(6, 21);
             L_TopLeftXY.Name = "L_TopLeftXY";
             L_TopLeftXY.Size = new Size(114, 21);
-            L_TopLeftXY.TabIndex = 1;
+            L_TopLeftXY.TabIndex = 0;
             L_TopLeftXY.Text = "Top-left Corner";
             // 
             // CB_TopMost
@@ -285,7 +285,7 @@
             CB_TopMost.Location = new Point(384, 319);
             CB_TopMost.Name = "CB_TopMost";
             CB_TopMost.Size = new Size(80, 19);
-            CB_TopMost.TabIndex = 2;
+            CB_TopMost.TabIndex = 17;
             CB_TopMost.Text = "Top Most?";
             CB_TopMost.UseVisualStyleBackColor = true;
             CB_TopMost.CheckedChanged += CB_TopMost_CheckedChanged;
@@ -307,7 +307,7 @@
             B_TmpFolder.Location = new Point(470, 314);
             B_TmpFolder.Name = "B_TmpFolder";
             B_TmpFolder.Size = new Size(80, 27);
-            B_TmpFolder.TabIndex = 11;
+            B_TmpFolder.TabIndex = 19;
             B_TmpFolder.Text = "Open PDFs";
             B_TmpFolder.UseVisualStyleBackColor = true;
             B_TmpFolder.Click += B_TmpFolder_Click;
@@ -328,7 +328,7 @@
             L_FastAlert.Location = new Point(12, 272);
             L_FastAlert.Name = "L_FastAlert";
             L_FastAlert.Size = new Size(87, 21);
-            L_FastAlert.TabIndex = 14;
+            L_FastAlert.TabIndex = 16;
             L_FastAlert.Text = "o((>ω< ))o";
             // 
             // PB
@@ -345,7 +345,7 @@
             B_OpenPDF.Location = new Point(470, 281);
             B_OpenPDF.Name = "B_OpenPDF";
             B_OpenPDF.Size = new Size(80, 27);
-            B_OpenPDF.TabIndex = 15;
+            B_OpenPDF.TabIndex = 18;
             B_OpenPDF.Text = "Open PDF";
             B_OpenPDF.UseVisualStyleBackColor = true;
             B_OpenPDF.Click += B_OpenPDF_Click;
